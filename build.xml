@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
-<project name="hello" default="compile">
+<project name="calculator" default="compile">
     <taskdef resource="cpptasks.tasks"/>
+
     <target name="compile">
         <cc outfile="calculator" objdir="obj" outtype="executable">
             <fileset dir="./" includes="*.cpp"/>
