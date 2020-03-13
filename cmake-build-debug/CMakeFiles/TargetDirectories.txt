@@ -1,0 +1,3 @@
+/home/brayanrv/TEC/V Semestre/Datos_II/Actividades en clase/c++_ci_pipeline/calculator/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/brayanrv/TEC/V Semestre/Datos_II/Actividades en clase/c++_ci_pipeline/calculator/cmake-build-debug/CMakeFiles/calculator.dir
+/home/brayanrv/TEC/V Semestre/Datos_II/Actividades en clase/c++_ci_pipeline/calculator/cmake-build-debug/CMakeFiles/edit_cache.dir
