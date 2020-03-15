@@ -8,7 +8,7 @@ script:
     - rm -f bw-output
     - mkdir build
     - cd build
-    - cmake ..
+    - cmake
     - build-wrapper-linux-x86-64 --out-dir ../bw-output make all
     - cd ..
     - sonar-scanner -Dsonar.cfamily.build-wrapper-output=bw-output
