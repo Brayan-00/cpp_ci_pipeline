@@ -12,12 +12,10 @@ script:
     - build-wrapper-linux-x86-64 --out-dir ../bw-output cmake
     - cd ..
     - sonar-scanner
-      -Dsonar.organization=brayan-00
-      -Dsonar.projectKey=Brayan-00_cpp_ci_pipeline
-      -Dsonar.sources=.
-      -Dsonar.host.url=https://sonarcloud.io
-      -Dsonar.cfamily.build-wrapper-output=bw-output
-      -Dsonar.login=088732ffb1eeb3e2b6d6a0a2cac299a699243b69
+    -Dsonar.cfamily.build-wrapper-output=bw-output
+
+
+
 
 
 addons:
