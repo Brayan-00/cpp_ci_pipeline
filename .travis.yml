@@ -1,18 +1,23 @@
+dist: trusty
 language:
   cpp
 compiler:
   - gcc
   - clang
 script:
-  - cmake
-  - build-wrapper-linux-x86-64 --out-dir bw-output cmake
+    # Wraps the compilation with the Build Wrapper to generate configuration (used
+    # later by the SonarScanner) into the "bw-output" folder
+    - build-wrapper-linux-x86-64 --out-dir bw-output cmake
+    # And finally run the SonarCloud analysis - read the "sonar-project.properties"
+    # file to see the specific configuration
+    - sonar-scanner -Dsonar.cfamily.build-wrapper-output=bw-output
 
 
 addons:
   sonarcloud:
     organization: "brayan-00"
     token:
-      secure: "bb2ec2e47d7bdfc17c32bc9745ea0bfe8b88f905"
+      secure: "81e64ec5ba629f55d7aa15a256e2dc16fb4c55a3"
 
   apt:
     sources:
