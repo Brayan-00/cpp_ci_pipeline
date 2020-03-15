@@ -17,13 +17,6 @@ addons:
     token:
       secure: "81e64ec5ba629f55d7aa15a256e2dc16fb4c55a3"
 
-  apt:
-    sources:
-      - george-edison55-precise-backports
-    packages:
-      - cmake-data
-      - cmake
-
 
 
 
