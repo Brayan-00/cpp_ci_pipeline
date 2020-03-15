@@ -1,4 +1,8 @@
 language:
   cpp
 compiler:
-  gcc
+  - gcc
+  - clang
+
+script:
+  - ./configure && make && make test
