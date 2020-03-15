@@ -9,9 +9,9 @@ script:
     - mkdir build
     - cd build
     - cmake
-    - build-wrapper-linux-x86-64 --out-dir ../sonaroutput cmake
+    - build-wrapper-linux-x86-64 --out-dir ../bw-output cmake
     - cd ..
-    - sonar-scanner-Dsonar.cfamily.build-wrapper-output=sonaroutput
+    - sonar-scanner-Dsonar.cfamily.build-wrapper-output=bw-output
 
 
 addons:
@@ -19,12 +19,4 @@ addons:
     organization: "brayan-00"
     token:
       secure: "81e64ec5ba629f55d7aa15a256e2dc16fb4c55a3"
-
-
-
-
-cache:
-  directories:
-    - '$HOME/.sonar/cache'
-
 
