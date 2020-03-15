@@ -5,19 +5,27 @@ compiler:
   - clang
 script:
   - cmake
+  - build-wrapper-linux-x86-64 --out-dir bw-output cmake
 
 
 addons:
+  sonarcloud:
+    organization: "brayan-00"
+    token:
+      secure: "bb2ec2e47d7bdfc17c32bc9745ea0bfe8b88f905"
+
   apt:
     sources:
       - george-edison55-precise-backports
     packages:
       - cmake-data
       - cmake
-      -
+
 
 
 
 cache:
   directories:
     - '$HOME/.sonar/cache'
+
+
