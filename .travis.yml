@@ -11,8 +11,7 @@ script:
     - cmake
     - build-wrapper-linux-x86-64 --out-dir ../bw-output cmake
     - cd ..
-    - sonar-scanner
-    - -Dsonar.cfamily.build-wrapper-output=bw-output
+    - sonar-scanner -Dsonar.cfamily.build-wrapper-output=bw-output
 
 
 
