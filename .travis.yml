@@ -11,7 +11,8 @@ script:
     - cmake
     - build-wrapper-linux-x86-64 --out-dir ../sonaroutput cmake
     - cd ..
-    - sonar-scanner -Dsonar.cfamily.build-wrapper-output = sonaroutput
+    - sonar-scanner
+    - -Dsonar.cfamily.build-wrapper-output=sonaroutput
 
 
 addons:
