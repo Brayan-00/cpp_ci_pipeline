@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++2a
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I"/home/brayanrv/TEC/V Semestre/Datos_II/cpp-ci-pipeline/cpp_ci_pipeline/src" 
 

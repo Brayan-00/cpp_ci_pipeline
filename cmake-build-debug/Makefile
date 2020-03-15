@@ -48,24 +48,59 @@ RM = /snap/clion/103/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/brayanrv/TEC/V Semestre/Datos_II/Actividades en clase/c++_ci_pipeline/calculator"
+CMAKE_SOURCE_DIR = "/home/brayanrv/TEC/V Semestre/Datos_II/cpp-ci-pipeline/cpp_ci_pipeline"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/brayanrv/TEC/V Semestre/Datos_II/Actividades en clase/c++_ci_pipeline/calculator/cmake-build-debug"
+CMAKE_BINARY_DIR = "/home/brayanrv/TEC/V Semestre/Datos_II/cpp-ci-pipeline/cpp_ci_pipeline/cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/103/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/snap/clion/103/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
 
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/snap/clion/103/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
-.PHONY : rebuild_cache/fast
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/snap/clion/103/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/snap/clion/103/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/snap/clion/103/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/snap/clion/103/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -78,11 +113,22 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/snap/clion/103/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/brayanrv/TEC/V Semestre/Datos_II/Actividades en clase/c++_ci_pipeline/calculator/cmake-build-debug/CMakeFiles" "/home/brayanrv/TEC/V Semestre/Datos_II/Actividades en clase/c++_ci_pipeline/calculator/cmake-build-debug/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/brayanrv/TEC/V Semestre/Datos_II/cpp-ci-pipeline/cpp_ci_pipeline/cmake-build-debug/CMakeFiles" "/home/brayanrv/TEC/V Semestre/Datos_II/cpp-ci-pipeline/cpp_ci_pipeline/cmake-build-debug/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/brayanrv/TEC/V Semestre/Datos_II/Actividades en clase/c++_ci_pipeline/calculator/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/brayanrv/TEC/V Semestre/Datos_II/cpp-ci-pipeline/cpp_ci_pipeline/cmake-build-debug/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -111,44 +157,95 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named calculator
+# Target rules for targets named calculator_lib
 
 # Build rule for target.
-calculator: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 calculator
-.PHONY : calculator
+calculator_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 calculator_lib
+.PHONY : calculator_lib
 
 # fast build rule for target.
-calculator/fast:
-	$(MAKE) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/build
-.PHONY : calculator/fast
+calculator_lib/fast:
+	$(MAKE) -f src/CMakeFiles/calculator_lib.dir/build.make src/CMakeFiles/calculator_lib.dir/build
+.PHONY : calculator_lib/fast
 
-main.o: main.cpp.o
+#=============================================================================
+# Target rules for targets named calculator_run
 
-.PHONY : main.o
+# Build rule for target.
+calculator_run: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 calculator_run
+.PHONY : calculator_run
 
-# target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/main.cpp.o
-.PHONY : main.cpp.o
+# fast build rule for target.
+calculator_run/fast:
+	$(MAKE) -f src/CMakeFiles/calculator_run.dir/build.make src/CMakeFiles/calculator_run.dir/build
+.PHONY : calculator_run/fast
 
-main.i: main.cpp.i
+#=============================================================================
+# Target rules for targets named calculator_tst
 
-.PHONY : main.i
+# Build rule for target.
+calculator_tst: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 calculator_tst
+.PHONY : calculator_tst
 
-# target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/main.cpp.i
-.PHONY : main.cpp.i
+# fast build rule for target.
+calculator_tst/fast:
+	$(MAKE) -f tst/CMakeFiles/calculator_tst.dir/build.make tst/CMakeFiles/calculator_tst.dir/build
+.PHONY : calculator_tst/fast
 
-main.s: main.cpp.s
+#=============================================================================
+# Target rules for targets named gmock_main
 
-.PHONY : main.s
+# Build rule for target.
+gmock_main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gmock_main
+.PHONY : gmock_main
 
-# target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/main.cpp.s
-.PHONY : main.cpp.s
+# fast build rule for target.
+gmock_main/fast:
+	$(MAKE) -f lib/googletest/googlemock/CMakeFiles/gmock_main.dir/build.make lib/googletest/googlemock/CMakeFiles/gmock_main.dir/build
+.PHONY : gmock_main/fast
+
+#=============================================================================
+# Target rules for targets named gmock
+
+# Build rule for target.
+gmock: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gmock
+.PHONY : gmock
+
+# fast build rule for target.
+gmock/fast:
+	$(MAKE) -f lib/googletest/googlemock/CMakeFiles/gmock.dir/build.make lib/googletest/googlemock/CMakeFiles/gmock.dir/build
+.PHONY : gmock/fast
+
+#=============================================================================
+# Target rules for targets named gtest_main
+
+# Build rule for target.
+gtest_main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gtest_main
+.PHONY : gtest_main
+
+# fast build rule for target.
+gtest_main/fast:
+	$(MAKE) -f lib/googletest/googletest/CMakeFiles/gtest_main.dir/build.make lib/googletest/googletest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
+
+#=============================================================================
+# Target rules for targets named gtest
+
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gtest
+.PHONY : gtest
+
+# fast build rule for target.
+gtest/fast:
+	$(MAKE) -f lib/googletest/googletest/CMakeFiles/gtest.dir/build.make lib/googletest/googletest/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
 
 # Help Target
 help:
@@ -156,12 +253,19 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
-	@echo "... calculator"
+	@echo "... install/strip"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... list_install_components"
 	@echo "... edit_cache"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... rebuild_cache"
+	@echo "... calculator_lib"
+	@echo "... calculator_run"
+	@echo "... calculator_tst"
+	@echo "... gmock_main"
+	@echo "... gmock"
+	@echo "... gtest_main"
+	@echo "... gtest"
 .PHONY : help
 
 

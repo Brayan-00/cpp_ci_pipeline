@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/calculator.dir/main.cpp.o"
+  "CMakeFiles/calculator.dir/src/calculator.cpp.o"
   "calculator"
   "calculator.pdb"
 )
