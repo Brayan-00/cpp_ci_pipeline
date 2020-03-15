@@ -3,6 +3,8 @@ language:
 compiler:
   - gcc
   - clang
+script:
+  - cmake
 
 addons:
   apt:
