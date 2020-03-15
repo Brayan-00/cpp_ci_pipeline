@@ -9,7 +9,7 @@ script:
     - mkdir build
     - cd build
     - cmake
-    - build-wrapper-linux-x86-64 --out-dir ../bw-output make all
+    - build-wrapper-linux-x86-64 --out-dir ../bw-output cmake .. -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles"
     - cd ..
     - sonar-scanner -Dsonar.cfamily.build-wrapper-output=bw-output
 
